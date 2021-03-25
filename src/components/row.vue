@@ -45,7 +45,6 @@ export default class Row extends Vue {
     }
 
     created(): void {
-        setTimeout(
         (async () => {
             await fetch('http://localhost:3000/pipelines').then(response => response.json())
             
@@ -57,7 +56,7 @@ export default class Row extends Vue {
             this.person = shortName(pers.name)
             this.create = getDay(new Date(this.lead.created_at * 1000))
             this.prise = this.lead.price.toLocaleString('ru') + " ₽"
-        }), 1000)
+        })()
     }
 }
 
