@@ -24,7 +24,7 @@ import Tags from './tags.vue'
   components: {
     Tags
   },
-  props: ['lead']
+  props: ['lead', 'i']
 })
 export default class Row extends Vue {
     lead!: any

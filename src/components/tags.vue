@@ -7,7 +7,7 @@ import { Component, Vue } from 'vue-property-decorator';
 
 @Component({
     props: {
-        tag: Object
+        tag: String
     }
 })
 

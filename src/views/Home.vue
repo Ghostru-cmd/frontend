@@ -2,7 +2,6 @@
   <div class="home">
       <Header />
       <Table
-        v-cloak
         v-bind:leads="leads"
         v-bind:statuses="statuses"
         v-bind:users="users"
@@ -37,15 +36,10 @@ export default class Home extends Vue {
 
   async mounted(){
     fetch('http://localhost:3000/leads').then(response => response.json()).then(data => {this.leads = data})
-    fetch('http://localhost:3000/pipelines').then(response => response.json()).then(data => {this.statuses = data})
-    this.users = await fetch('http://localhost:3000/users').then(response => response.json())
+    // fetch('http://localhost:3000/pipelines').then(response => response.json()).then(data => {this.statuses = data})
+    // fetch('http://localhost:3000/pipelines').then(response => response.json()).then(data => {this.users = data})
+    // this.users = await fetch('http://localhost:3000/users').then(response => response.json())
   }
   
 }
 </script>
-
-<style>
-[v-cloak] {
-  display: none;
-}
-</style>
