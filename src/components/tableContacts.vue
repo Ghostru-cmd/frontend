@@ -24,12 +24,20 @@ import RowContact from './rowContact.vue'
 @Component({
   components: {
     RowContact
-  },
-  props: {
-        contacts: Array
-    }
+  }
 })
 export default class TableContacts extends Vue {
+    contacts!: Promise<any>
+
+    data() {
+        return {
+        contacts: []
+        }
+    }
+
+    async mounted(){
+        this.contacts = await fetch('http://localhost:3000/contacts').then(response => response.json())
+    }
 }
 </script>
 

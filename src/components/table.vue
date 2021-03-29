@@ -14,8 +14,6 @@
                 v-for="(lead, i) of leads"
                 v-bind:lead="lead"
                 v-bind:i="i"
-                v-bind:statuses="statuses"
-                v-bind:users="users"
             />
         </tbody>
     </table>
@@ -28,12 +26,21 @@ import Row from './row.vue'
 @Component({
     components: {
         Row
-    },
-    props: ['leads', 'statuses', 'users']
+    }
 })
 
 export default class Table extends Vue {
-    
+    leads!: Promise<Array<any>>
+
+    data() {
+        return {
+            leads: []
+        }
+    }
+
+    async mounted() {
+        this.leads = await fetch('http://localhost:3000/leads').then(response => response.json())
+    }   
 }
 </script>
 

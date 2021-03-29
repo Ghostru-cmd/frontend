@@ -1,8 +1,8 @@
 <template>
     <tr class='row' :id="i">
         <th class='name'>{{contact.name}}</th>
-        <th class='phone'>{{phoneEmail[0]}}</th>
-        <th class='email'>{{phoneEmail[1]}}</th>
+        <th class='phone'>{{contact.phone}}</th>
+        <th class='email'>{{contact.email}}</th>
     </tr>
 </template>
 
@@ -23,17 +23,6 @@ interface State {
 })
 
 export default class RowContact extends Vue {
-    contact!: any
-    phoneEmail!: Array<string>
-
-    data(): State {
-        return {
-            phoneEmail: []
-        }
-    }
-    mounted(): void {
-        this.phoneEmail = this.contact.custom_fields_values.map((phoneEmail: any) => phoneEmail.values[0].value)
-    }
 }
 </script>
 
